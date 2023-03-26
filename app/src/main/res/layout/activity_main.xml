@@ -9,8 +9,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <TextView
         android:id="@+id/text_location"
         android:textSize="18sp"

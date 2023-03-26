@@ -1,6 +1,6 @@
 package com.example.locationtracker2;
-
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     LocationManager locationManager;
     Spinner spinner;
 
-
     Integer nums[] = {1,2,3,4,5,6,7,8,9,10};
     public Integer bno = 0;
 
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(MainActivity.this, android.R.layout.simple_spinner_item,nums);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
 
         textView_location = findViewById(R.id.text_location);
         button_location = findViewById(R.id.button_location);
@@ -75,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             },100);
         }
 
-
         button_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,9 +80,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 getLocation();
             }
         });
-
-
-
     }
 
     @SuppressLint("MissingPermission")
@@ -98,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -121,14 +114,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
             textView_location.setText(address);
 
-
-            //Thread.sleep(5000);
-            //getLocation();
-
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
     @Override
