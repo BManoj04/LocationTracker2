@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     Integer nums[] = {1,2,3,4,5,6,7,8,9,10};
     public Integer bno = 0;
+    public String address;
 
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
     private DatabaseReference root = db.getReference().child("users");
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 bno = (int) parent.getItemAtPosition(position);
+                address = textView_location.getText().toString();
             }
 
             @Override
@@ -101,14 +103,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
             String address = addresses.get(0).getAddressLine(0);
-            Double lat = addresses.get(0).getLatitude();
-            Double lon = addresses.get(0).getLongitude();
+            String lat = String.valueOf(addresses.get(0).getLatitude());
+            String lon = String.valueOf(addresses.get(0).getLongitude());
             System.out.println(geocoder.isPresent());
             System.out.println(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
 
-            HashMap<String,Double> usermap = new HashMap<>();
+            HashMap<String,String> usermap = new HashMap<>();
             usermap.put("lat",lat);
             usermap.put("lon",lon);
+            usermap.put("address",address);
+
+//            HashMap<String,String> usermap2 = new HashMap<>();
+//            usermap2.put("Address",);
 
             root.child(String.valueOf(bno)).setValue(usermap);
 
